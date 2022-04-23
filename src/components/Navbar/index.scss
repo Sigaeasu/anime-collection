@@ -1,0 +1,51 @@
+#navbar {
+    background: #fff;
+    @apply flex;
+    @apply flex-wrap;
+    padding: 0px;
+}
+
+.trigger {
+    padding: 0px 24px;
+    font-size: 18px;
+    line-height: 64px;
+    cursor: pointer;
+    transition: color 0.3s;
+    @apply my-auto;
+}
+
+.trigger:hover {
+    color: #1890ff;
+}
+
+.right-menu {
+    @apply my-auto;
+    margin-right: 24px
+}
+
+.profile-icon {
+    @apply w-12 h-12 rounded-full shadow-lg border-white border-4 cursor-pointer;
+}
+
+.dropdown-menu {
+    @apply absolute;
+    @apply bg-gray-100;
+    @apply border;
+    @apply border-t-0;
+    @apply shadow-xl;
+    @apply text-gray-700;
+    @apply right-0;
+    @apply mr-6;
+    margin-top: 65px;
+}
+
+.dropdown-item {
+    @apply px-12;
+    @apply py-2;
+    cursor: pointer;
+    margin: 0;
+}
+
+.dropdown-item:hover {
+    background-color: rgb(187, 187, 187);
+}
