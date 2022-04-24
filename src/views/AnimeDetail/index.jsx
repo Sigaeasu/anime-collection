@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 
 import DetailContent from "./DetailContent";
 import InsertAnimeModal from "../../components/Modal/InsertAnimeModal";
+import LoadingContent from "./LoadingContent"
 
 export default function AnimeDetail() {
     const { id } = useParams();
@@ -31,7 +32,7 @@ export default function AnimeDetail() {
     }
 
     if (loading) {
-        return (<>loading</>)
+        return (<><LoadingContent /></>)
     } else {
         const anime = data?.Media
         return (
