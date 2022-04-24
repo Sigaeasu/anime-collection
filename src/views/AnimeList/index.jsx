@@ -42,8 +42,6 @@ export default function AnimeList() {
                         </div>
                     )}
                 </div>
-
-                <Pagination style={{textAlign: 'center', marginTop: 40}} />
             </>
         )
     } else {

@@ -12,7 +12,8 @@ import {
     Link,
 } from "react-router-dom";
 
-import Card from "./Card";
+import AnimeCard from "../../components/Card";
+import Loading from "../../components/Loading";
 
 const AnimeCollectionList = () => {
     const { name } = useParams();
@@ -54,7 +55,17 @@ const AnimeCollectionList = () => {
     }
 
     if (loading) {
-        return (<>loading</>)
+        return (
+            <>
+                <div className="flex flex-wrap w-full h-full">
+                    {Array.from({ length: 10 }, (_, i) =>
+                        <div className={linkStyle}>
+                            <Loading />
+                        </div>
+                    )}
+                </div>
+            </>
+        )
     } else {
         let animeList = data?.Page.media
         let paginationInfo = data?.Page.pageInfo
@@ -67,12 +78,8 @@ const AnimeCollectionList = () => {
                     <div className="flex flex-wrap w-full h-full">
                         {
                             animeList.map((e) => (
-                                <Link 
-                                    to={`/detail/${e.id}`} 
-                                    className={linkStyle} 
-                                    key={e.id}
-                                >
-                                    <Card media={e} />
+                                <Link to={`/detail/${e.id}`} className={linkStyle} key={e.id}>
+                                    <AnimeCard media={e} />
                                 </Link>
                             ))
                         }
