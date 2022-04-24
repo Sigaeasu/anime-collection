@@ -15,7 +15,7 @@ import ConfirmationModal from "../../components/Modal/ConfirmationModal";
 
 export default function AnimeCollections() {
     const { Title } = Typography
-    const { linkStyle } =  style
+    const { baseContainer, buttonStyle, cardContainer, linkContainer, iconContainer, editContainer, deleteContainer } =  style
     const modalRef = useRef();
     const [isCollectionModalVisible, setIsCollectionModalVisible] = useState(false);
     const [isConfirmationModalVisible, setIsConfirmationModalVisible] = useState(false);
@@ -72,33 +72,39 @@ export default function AnimeCollections() {
 
     return (
         <>
-            <div>
-                <Button type="primary" onClick={showCollectionModal}>
+            <div className="mb-12">
+                <button 
+                    onClick={showCollectionModal} 
+                    className={buttonStyle}
+                >
                     Create Collection
-                </Button>
+                </button>
             </div>
             <div className="flex flex-wrap">
                 {
                     collection && (
                         collection.map((e) => {
                             return (
-                                <Link 
-                                    to={`/collections/${e.name}`} 
-                                    className={linkStyle} 
-                                    key={e.name}
-                                >
-                                    <div className="w-full border-2 border-gray-200 p-2 flex">
-                                        <Title level={5} className="w-full">{e.name}</Title>
-                                        <span 
-                                            className="text-yellow-300" 
-                                            onClick={() => handleEdit(e.name)}
-                                        ><EditOutlined /></span>
-                                        <span 
-                                            className="text-red-300" 
-                                            onClick={() => handleDelete(e.name)}
-                                        ><DeleteOutlined /></span>
+                                    <div className={baseContainer} key={e.name}>
+                                        <div className={cardContainer}>
+                                            <Link 
+                                                to={`/collections/${e.name}`}
+                                                className={linkContainer}
+                                            >
+                                                <Title level={5}>{e.name}</Title> 
+                                            </Link>
+                                            <div className={iconContainer}>
+                                                <span 
+                                                    className={editContainer}
+                                                    onClick={() => handleEdit(e.name)}
+                                                ><EditOutlined /></span>
+                                                <span 
+                                                    className={deleteContainer}
+                                                    onClick={() => handleDelete(e.name)}
+                                                ><DeleteOutlined /></span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </Link>
                             )
                         })
                     )
