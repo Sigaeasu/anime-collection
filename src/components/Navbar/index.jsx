@@ -18,14 +18,29 @@ export default function Navbar(props) {
     return (
         <>
             <Header id="navbar">
-                <Menu mode="horizontal" defaultSelectedKeys={pathname}>
-                    <Menu.Item key="/home" icon={<HomeOutlined />}>
-                        <Link to={`/home`}>
+                <Menu 
+                    mode="horizontal" 
+                    defaultSelectedKeys={pathname} 
+                    style={{
+                        backgroundColor: "transparent",
+                        borderBottom: "none",
+                    }}
+                >
+                    <Menu.Item 
+                        key="/home" 
+                        icon={<HomeOutlined />} 
+                        id="item"
+                    >
+                        <Link to={`/home`} id="itemLink">
                             Home
                         </Link>
                     </Menu.Item> 
-                    <Menu.Item key="/collections" icon={<GroupOutlined />}>
-                        <Link to={`/collections`}>
+                    <Menu.Item 
+                        key="/collections" 
+                        icon={<GroupOutlined />}
+                        id="item"
+                    >
+                        <Link to={`/collections`} id="itemLink">
                             Collections
                         </Link>
                     </Menu.Item> 
