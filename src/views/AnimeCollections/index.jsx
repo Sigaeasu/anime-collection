@@ -4,12 +4,18 @@ import {
     Typography
 } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import style from './style'
+
+import {
+    Link,
+} from "react-router-dom";
 
 import CollectionModal from "../../components/Modal/CollectionModal";
 import ConfirmationModal from "../../components/Modal/ConfirmationModal";
 
 export default function AnimeCollections() {
     const { Title } = Typography
+    const { linkStyle } =  style
     const modalRef = useRef();
     const [isCollectionModalVisible, setIsCollectionModalVisible] = useState(false);
     const [isConfirmationModalVisible, setIsConfirmationModalVisible] = useState(false);
@@ -76,17 +82,23 @@ export default function AnimeCollections() {
                     collection && (
                         collection.map((e) => {
                             return (
-                                <div key={e.name} className="w-1/4 border-2 border-gray-200 p-2 flex">
-                                    <Title level={5} className="w-full">{e.name}</Title>
-                                    <span 
-                                        className="text-yellow-300" 
-                                        onClick={() => handleEdit(e.name)}
-                                    ><EditOutlined /></span>
-                                    <span 
-                                        className="text-red-300" 
-                                        onClick={() => handleDelete(e.name)}
-                                    ><DeleteOutlined /></span>
-                                </div>
+                                <Link 
+                                    to={`/collections/${e.name}`} 
+                                    className={linkStyle} 
+                                    key={e.name}
+                                >
+                                    <div className="w-full border-2 border-gray-200 p-2 flex">
+                                        <Title level={5} className="w-full">{e.name}</Title>
+                                        <span 
+                                            className="text-yellow-300" 
+                                            onClick={() => handleEdit(e.name)}
+                                        ><EditOutlined /></span>
+                                        <span 
+                                            className="text-red-300" 
+                                            onClick={() => handleDelete(e.name)}
+                                        ><DeleteOutlined /></span>
+                                    </div>
+                                </Link>
                             )
                         })
                     )
