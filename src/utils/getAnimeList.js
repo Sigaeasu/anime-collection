@@ -20,11 +20,26 @@ const GET_ANIME_LIST_QUERY = gql`
                 duration
                 genres
                 description
+                averageScore
+                popularity
                 coverImage {
                     extraLarge
                     large
                     medium
                     color
+                }
+                status
+                season
+                characters {
+                    nodes {
+                        name {
+                            full
+                        }
+                        image {
+                            large
+                            medium
+                        }
+                    }
                 }
             }
         }

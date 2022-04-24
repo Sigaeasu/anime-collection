@@ -1,8 +1,10 @@
 import { css } from '@emotion/css'
 
 const cardStyle = css`
-    width: 100%;
-    border: 1px solid gray;
+    transition: 0.5s;
+    &:hover {
+        transform: scale(1.07);
+    }
 `
 
 export default {

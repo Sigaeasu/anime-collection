@@ -4,7 +4,6 @@ import { GET_ANIME_LIST_QUERY } from "../../utils/getAnimeList"
 import style from './style'
 
 import { 
-    Typography,
     Pagination,
 } from 'antd';
 
@@ -12,7 +11,8 @@ import {
     Link,
 } from "react-router-dom";
 
-import Card from "./Card";
+import AnimeCard from "../../components/Card";
+import Loading from "../../components/Loading";
 
 export default function AnimeList() {
     const { linkStyle } =  style
@@ -33,7 +33,19 @@ export default function AnimeList() {
     }
 
     if (loading) {
-        return (<>loading</>)
+        return (
+            <>
+                <div className="flex flex-wrap w-full h-full">
+                    {Array.from({ length: 10 }, (_, i) =>
+                        <div className={linkStyle}>
+                            <Loading />
+                        </div>
+                    )}
+                </div>
+
+                <Pagination style={{textAlign: 'center', marginTop: 40}} />
+            </>
+        )
     } else {
         let animeList = data?.Page.media
         let paginationInfo = data?.Page.pageInfo
@@ -43,7 +55,7 @@ export default function AnimeList() {
                     {
                         animeList.map((e) => (
                             <Link to={`/detail/${e.id}`} className={linkStyle} key={e.id}>
-                                <Card media={e} />
+                                <AnimeCard media={e} />
                             </Link>
                         ))
                     }

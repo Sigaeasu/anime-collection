@@ -17,10 +17,10 @@ export default function Base() {
 
     return (
         <Layout id="base">
-            <Layout>
+            <Layout id="baseContent">
                 <Navbar onCollapsed={toggleSidebar} />
                 <Content id="content" />
-                <Footer style={{ textAlign: 'center' }}>Ant Design ©2022 Created by Sigaeasu</Footer>
+                <Footer style={{ textAlign: 'center', backgroundColor: "transparent", color: "#9798A6" }}>Ant Design ©2022 Created by Sigaeasu</Footer>
             </Layout>
         </Layout>
     );
