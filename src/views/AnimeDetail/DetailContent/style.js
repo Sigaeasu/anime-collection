@@ -124,19 +124,17 @@ const charactersContainer = css`
     padding: 10px;
     border-radius: 5px;
     margin-top: 5px;
-    @media (min-width: 480px) {
-        display: flex;
-        flex: wrap;
-    }
+    display: flex;
+    flex-wrap: wrap;
 `
 
 const charactersSpan = css`
     display: flex;
+    flex: wrap;
     width: 100%;
     padding: 5px;
     @media (min-width: 480px) {
         width: 25%;
-        padding: 24px;
     }
 `
 

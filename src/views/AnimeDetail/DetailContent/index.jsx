@@ -101,19 +101,21 @@ const DetailContent = forwardRef((props, ref) => {
                 <div className={leftContainer}>
                     <img src={anime.coverImage.extraLarge} alt="" className={coverImage} />
                     <div style={{margin: "8px"}}>
-                        <span>Duration : {anime.duration} minutes</span><br/>
-                        <span>Episodes : {anime.episodes}</span><br/>
-                        <span>Genres : {anime.genres.join(", ")}</span><br/>
-                        <span>Season : {anime.season}</span><br/>
-                        <span>Status : {anime.status}</span><br/>
+                        <div><span className="bg-violet-200 p-1 rounded-lg">Duration</span> {anime.duration} minutes</div><br />
+                        <div><span className="bg-violet-200 p-1 rounded-lg">Episodes</span> {anime.episodes}</div><br />
+                        <div><span className="bg-violet-200 p-1 rounded-lg">Genres</span> {anime.genres.join(", ")}</div><br />
+                        <div><span className="bg-violet-200 p-1 rounded-lg">Season</span> {anime.season}</div><br />
+                        <div><span className="bg-violet-200 p-1 rounded-lg">Status</span> {anime.status}</div>
                     </div>
                 </div>
 
                 <div className={rightContainer}>
                     <div className={descriptionContainer}>
+                        <Title level={3} className="w-ful   l">Description</Title>
                         {anime.description}
                     </div>
                     <div className={charactersContainer}>
+                        <Title level={3} className="w-full">Characters</Title>
                         {
                             characters.map((e) => (
                                 <div className={charactersSpan} key={e.name.full}>
