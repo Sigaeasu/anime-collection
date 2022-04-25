@@ -1,23 +1,14 @@
 import React, {useState, useEffect, useRef, useContext} from "react";
-import { 
-    Button,
-    Typography
-} from 'antd';
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import style from './style'
-
-import {
-    Link,
-} from "react-router-dom";
 
 import CollectionModal from "../../components/Modal/CollectionModal";
 import ConfirmationModal from "../../components/Modal/ConfirmationModal";
+import CollectionCard from "./CollectionCard";
 
 import { CollectionContext } from "../../components/Base"
 
 export default function AnimeCollections() {
-    const { Title } = Typography
-    const { baseContainer, buttonStyle, cardContainer, linkContainer, iconContainer, editContainer, deleteContainer } =  style
+    const { buttonStyle } =  style
     const modalRef = useRef();
     const [isCollectionModalVisible, setIsCollectionModalVisible] = useState(false);
     const [isConfirmationModalVisible, setIsConfirmationModalVisible] = useState(false);
@@ -89,26 +80,11 @@ export default function AnimeCollections() {
                     collection && (
                         collection.map((e) => {
                             return (
-                                    <div className={baseContainer} key={e.name}>
-                                        <div className={cardContainer}>
-                                            <Link 
-                                                to={`/collections/${e.name}`}
-                                                className={linkContainer}
-                                            >
-                                                <Title level={5}>{e.name}</Title> 
-                                            </Link>
-                                            <div className={iconContainer}>
-                                                <span 
-                                                    className={editContainer}
-                                                    onClick={() => handleEdit(e.name)}
-                                                ><EditOutlined /></span>
-                                                <span 
-                                                    className={deleteContainer}
-                                                    onClick={() => handleDelete(e.name)}
-                                                ><DeleteOutlined /></span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <CollectionCard 
+                                        collection={e}
+                                        handleEdit={handleEdit}
+                                        handleDelete={handleDelete}
+                                    />
                             )
                         })
                     )
