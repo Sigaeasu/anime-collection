@@ -3,6 +3,7 @@ import {
     Modal,
     Select
 } from 'antd';
+import "./index.scss"
 import toast from "react-hot-toast";
 
 const InsertAnimeModal = forwardRef((props, ref) => {

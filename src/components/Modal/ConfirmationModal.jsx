@@ -2,6 +2,7 @@ import React from "react"
 import { 
     Modal
 } from 'antd';
+import './index.scss'
 import toast from "react-hot-toast";
 
 const ConfirmationModal = (props) => {
@@ -21,7 +22,7 @@ const ConfirmationModal = (props) => {
     return (
         <>
             <Modal 
-                title={props.title}
+                title={" "}
                 visible={props.visible}
                 onOk={deleteCollection}
                 onCancel={props.closeModal}

@@ -1,0 +1,29 @@
+.ant-modal-header, .ant-modal-body, .ant-modal-footer {
+    // background-color: red;
+    border: none;
+}
+
+.ant-modal-footer {
+    display: flex;
+}
+
+.ant-modal-footer > .ant-btn {
+    width: 50%;
+    border: none;
+}
+
+.ant-modal-footer > .ant-btn-default {
+    background-color: #ff3d3d;
+    color: white;
+    &:hover {
+        background-color: #ff7070;
+    }
+}
+
+.ant-modal-footer > .ant-btn-primary {
+    background-color: #6140FF;
+    color: white;
+    &:hover {
+        background-color: #8b73ff;
+    }
+}

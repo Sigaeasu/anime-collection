@@ -3,7 +3,7 @@ import {
     Modal, 
     Input
 } from 'antd';
-
+import "./index.scss"
 import toast from "react-hot-toast";
 
 const CollectionModal = forwardRef((props, ref) => {
@@ -90,15 +90,17 @@ const CollectionModal = forwardRef((props, ref) => {
     return (
         <>
             <Modal 
-                title={props.title}
+                title={" "}
                 visible={props.visible} 
                 onOk={props.action === "create" ? createCollection : editCollection} 
                 onCancel={props.closeModal}
             >
                 <Input 
-                    placeholder="Your new collection's name" 
+                    placeholder="Create Collection" 
                     onChange={handleCollectionNameInput}
                     value={collectionName}
+                    bordered={false}
+                    style={{fontSize: "24px", borderBottom: "1px solid #c7c7c7"}}
                 />
             </Modal>
         </>
