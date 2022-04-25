@@ -17,7 +17,7 @@ import Loading from "../../components/Loading";
 
 const AnimeCollectionList = () => {
     const { name } = useParams();
-    const { linkStyle } =  style
+    const { cardStyle } =  style
     const [animeList, setAnimeList] = useState([])
     const [variables, setVariables] = useState({
         page: 1,
@@ -59,7 +59,7 @@ const AnimeCollectionList = () => {
             <>
                 <div className="flex flex-wrap w-full h-full">
                     {Array.from({ length: 10 }, (_, i) =>
-                        <div className={linkStyle}>
+                        <div className={cardStyle}>
                             <Loading />
                         </div>
                     )}
@@ -78,7 +78,7 @@ const AnimeCollectionList = () => {
                     <div className="flex flex-wrap w-full h-full">
                         {
                             animeList.map((e) => (
-                                <Link to={`/detail/${e.id}`} className={linkStyle} key={e.id}>
+                                <Link to={`/detail/${e.id}`} className={cardStyle} key={e.id}>
                                     <AnimeCard media={e} />
                                 </Link>
                             ))

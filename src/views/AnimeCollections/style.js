@@ -3,6 +3,9 @@ import { css } from '@emotion/css'
 const baseContainer = css`
     width: 25%;
     padding: 5px;
+    @media (max-width: 480px) {
+        width: 100%;
+    }
 `
 
 const cardContainer = css`

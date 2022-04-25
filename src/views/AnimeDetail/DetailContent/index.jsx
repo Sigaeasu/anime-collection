@@ -15,14 +15,20 @@ const DetailContent = forwardRef((props, ref) => {
     const anime = props.anime
     const characters = anime.characters.nodes
     const { 
-        topContainer, 
+        headerContainer, 
+        titleContainer,
+        scoreContainer,
         coverImage, 
         collectionButton, 
         collectionListSpan, 
         collectionContainer, 
         collectionLink,
-        middleContainer, 
+        bodyContainer, 
         leftContainer,
+        rightContainer,
+        descriptionContainer,
+        charactersContainer,
+        charactersSpan
     } = style
 
     const [collection, setCollection] = useState([])
@@ -56,11 +62,11 @@ const DetailContent = forwardRef((props, ref) => {
             <span className={collectionButton} onClick={props.add}>
                 <HeartOutlined />
             </span>
-            <div className={topContainer}>
-                <div className="w-1/2 p-4">
+            <div className={headerContainer}>
+                <div className={titleContainer}>
                     <Title>{anime.title.romaji}</Title>
                 </div>
-                <div className="w-1/2 flex">
+                <div className={scoreContainer}>
                     <div className="w-1/2 text-center p-4">
                         <span className="text-4xl text-green-400"><FieldNumberOutlined /></span>
                         <Title level={5}>SCORE</Title>
@@ -90,7 +96,7 @@ const DetailContent = forwardRef((props, ref) => {
                     )})
                 }
             </div>
-            <div className={middleContainer}>
+            <div className={bodyContainer}>
 
                 <div className={leftContainer}>
                     <img src={anime.coverImage.extraLarge} alt="" className={coverImage} />
@@ -103,14 +109,14 @@ const DetailContent = forwardRef((props, ref) => {
                     </div>
                 </div>
 
-                <div style={{width: "70%", marginLeft: "4px"}}>
-                    <div style={{width: "100%", backgroundColor: "white", padding: "10px", borderRadius: "5px"}}>
+                <div className={rightContainer}>
+                    <div className={descriptionContainer}>
                         {anime.description}
                     </div>
-                    <div style={{width: "100%", backgroundColor: "white", padding: "10px", borderRadius: "5px", marginTop: "5px", display: "flex", flexWrap: "wrap"}}>
+                    <div className={charactersContainer}>
                         {
                             characters.map((e) => (
-                                <div className="flex w-1/4 p-4" key={e.name.full}>
+                                <div className={charactersSpan} key={e.name.full}>
                                     <img src={e.image.medium} alt="" style={{width: "50px", height: "50px", borderRadius: "50%"}} />
                                     <p>{e.name.full}</p>
                                 </div>
