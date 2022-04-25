@@ -1,13 +1,35 @@
 import { css } from '@emotion/css'
 
-const topContainer = css`
-    display: flex;
+// #region header
+const headerContainer = css`
     background-color: white;
     width: 100%;
     margin: 8px;
     border-radius: 5px;
+    @media (min-width: 480px) {
+        display: flex;
+    }
 `
 
+const titleContainer = css`
+    width: 50%;
+    padding: 24px;
+    @media (max-width: 480px) {
+        width: 100%;
+    }
+`
+
+const scoreContainer = css`
+    display: flex;
+    width: 50%;
+    @media (max-width: 480px) {
+        width: 100%;
+    }
+`
+
+// #endregion
+
+// #region collection
 const collectionContainer = css`
     display: flex;  
     flex-wrap: wrap;
@@ -54,13 +76,17 @@ const collectionLink = css`
         color: black
     }
 `
+// #endregion
 
-const middleContainer = css`
-    display: flex;
+// #region body
+const bodyContainer = css`
     background-color: transparent;
     width: 100%;
     margin: 8px;
     border-radius: 5px;
+    @media (min-width: 480px) {
+        display: flex;
+    }
 `
 
 const leftContainer = css`
@@ -69,15 +95,62 @@ const leftContainer = css`
     margin-right: 4px;
     background-color: white;
     border-radius: 5px;
+    @media (max-width: 480px) {
+        width: 100%;
+    }
+`
+
+const rightContainer = css`
+    width: 70%;
+    height: auto;
+    @media (min-width: 480px) {
+        margin-left: 4px;
+    }
+    @media (max-width: 480px) {
+        width: 100%;
+    }
+`
+
+const descriptionContainer = css`
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+`
+
+const charactersContainer = css`
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    display: flex;
+    flex-wrap: wrap;
+`
+
+const charactersSpan = css`
+    display: flex;
+    flex: wrap;
+    width: 100%;
+    padding: 5px;
+    @media (min-width: 480px) {
+        width: 25%;
+    }
 `
 
 export default {
-    topContainer,
+    headerContainer,
+    titleContainer,
+    scoreContainer,
     collectionContainer,
     coverImage,
     collectionButton,
     collectionListSpan,
     collectionLink,
-    middleContainer,
-    leftContainer
+    bodyContainer,
+    leftContainer,
+    rightContainer,
+    descriptionContainer,
+    charactersContainer,
+    charactersSpan
 }

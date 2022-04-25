@@ -1,44 +1,49 @@
 import React from "react";
 import style from "./style";
 
-import { Skeleton } from 'antd'
+import { Skeleton, Typography } from 'antd'
 import { HeartOutlined, LikeOutlined, FieldNumberOutlined } from '@ant-design/icons';
 
 const LoadingContent = () => {
+    const {Title} = Typography
     const { 
-        topContainer, 
+        headerContainer, 
+        titleContainer,
+        scoreContainer,
         coverImage, 
         collectionButton, 
         collectionListSpan, 
         collectionContainer, 
         collectionLink,
-        middleContainer, 
+        bodyContainer, 
         leftContainer,
+        rightContainer,
+        descriptionContainer,
+        charactersContainer,
+        charactersSpan
     } = style
 
     return (
         <>
-            <span className={collectionButton}>
-                <HeartOutlined />
-            </span>
-            <div className={topContainer}>
-                <div className="w-1/2 p-4">
+            <div className={headerContainer}>
+                <div className={titleContainer}>
                     <Skeleton.Input active={true} size={"large"} />
                 </div>
-                <div className="w-1/2 flex">
+                <div className={scoreContainer}>
                     <div className="w-1/2 text-center p-4">
                         <span className="text-4xl text-green-400"><FieldNumberOutlined /></span>
-                        <p level={5}>SCORE</p>
+                        <Title level={5}>SCORE</Title>
                         <Skeleton.Input active={true} size={"small"} />
                     </div>
                     <div className="w-1/2 text-center p-4">
                         <span className="text-4xl text-yellow-400"><LikeOutlined /></span>
-                        <p level={5}>POPULARITY</p>
+                        <Title level={5}>POPULARITY</Title>
                         <Skeleton.Input active={true} size={"small"} />
                     </div>
                 </div>
             </div>
             <div className={collectionContainer}>
+                <Title level={5}>Collection</Title>
                 <p level={5}>Collection</p>
                 <Skeleton.Input active={true} size={"small"} className="mx-2" />
                 <Skeleton.Input active={true} size={"small"} className="mx-2" />
@@ -46,7 +51,7 @@ const LoadingContent = () => {
                 <Skeleton.Input active={true} size={"small"} className="mx-2" />
                 <Skeleton.Input active={true} size={"small"} className="mx-2" />
             </div>
-            <div className={middleContainer}>
+            <div className={bodyContainer}>
 
                 <div className={leftContainer}>
                     <Skeleton.Image />
@@ -59,17 +64,21 @@ const LoadingContent = () => {
                     </div>
                 </div>
 
-                <div style={{width: "70%", marginLeft: "4px"}}>
-                    <div style={{width: "100%", backgroundColor: "white", padding: "10px", borderRadius: "5px"}}>
+                <div className={rightContainer}>
+                    <div className={descriptionContainer}>
+                        <Title level={3} className="w-ful   l">Description</Title>
                         <Skeleton />
                     </div>
-                    <div style={{width: "100%", backgroundColor: "white", padding: "10px", borderRadius: "5px", marginTop: "5px", display: "flex", flexWrap: "wrap"}}>
-                        {Array.from({ length: 12 }, (_, i) =>
-                            <div className="flex flex-wrap w-1/4 p-4" key={i}>
-                                <Skeleton.Avatar active={true} size={"small"} shape={"circle"} />
-                                <Skeleton.Input active={true} size={"small"} />
-                            </div>
-                        )}
+                    <div className={charactersContainer}>
+                        <Title level={3} className="w-full">Characters</Title>
+                        {
+                            Array.from({ length: 12 }, (_, i) =>
+                                <div className={charactersSpan} key={i}>
+                                    <Skeleton.Avatar active={true} size={"small"} shape={"circle"} />
+                                    <Skeleton.Input active={true} size={"small"} />
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
             </div>
