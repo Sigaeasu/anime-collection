@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState, useEffect, useRef, useContext} from "react";
 import { 
     Button,
     Typography
@@ -13,6 +13,8 @@ import {
 import CollectionModal from "../../components/Modal/CollectionModal";
 import ConfirmationModal from "../../components/Modal/ConfirmationModal";
 
+import { CollectionContext } from "../../components/Base"
+
 export default function AnimeCollections() {
     const { Title } = Typography
     const { baseContainer, buttonStyle, cardContainer, linkContainer, iconContainer, editContainer, deleteContainer } =  style
@@ -22,7 +24,7 @@ export default function AnimeCollections() {
     const [modalTitle, setModalTitle] = useState("")
     const [action, setAction] = useState("")
     const [item, setItem] = useState("")
-    const [collection, setCollection] = useState([])
+    const {collection, updateCollection} = useContext(CollectionContext);
 
     const showCollectionModal = () => {
         setModalTitle("Add New Collection")
@@ -39,7 +41,9 @@ export default function AnimeCollections() {
         setIsCollectionModalVisible(false)
         setModalTitle("")
         setAction("")
-        setCollection(JSON.parse(localStorage.getItem("collection")))
+
+        updateCollection()
+        
         modalRef.current.resetInput(null)
         modalRef.current.oldName(null)
     }
@@ -49,11 +53,11 @@ export default function AnimeCollections() {
         setModalTitle("")
         setAction("")
         setItem("")
-        setCollection(JSON.parse(localStorage.getItem("collection")))
+        updateCollection()
     }
     
     useEffect(() => {
-      setCollection(JSON.parse(localStorage.getItem("collection")))
+        updateCollection()
     }, [])
     
     function handleEdit(name) {

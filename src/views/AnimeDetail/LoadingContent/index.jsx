@@ -3,7 +3,6 @@ import style from "./style";
 
 import { Skeleton } from 'antd'
 import { HeartOutlined, LikeOutlined, FieldNumberOutlined } from '@ant-design/icons';
-import SkeletonImage from "antd/lib/skeleton/Image";
 
 const LoadingContent = () => {
     const { 
@@ -66,7 +65,7 @@ const LoadingContent = () => {
                     </div>
                     <div style={{width: "100%", backgroundColor: "white", padding: "10px", borderRadius: "5px", marginTop: "5px", display: "flex", flexWrap: "wrap"}}>
                         {Array.from({ length: 12 }, (_, i) =>
-                            <div className="flex flex-wrap w-1/4 p-4">
+                            <div className="flex flex-wrap w-1/4 p-4" key={i}>
                                 <Skeleton.Avatar active={true} size={"small"} shape={"circle"} />
                                 <Skeleton.Input active={true} size={"small"} />
                             </div>

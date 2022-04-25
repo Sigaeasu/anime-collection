@@ -37,7 +37,7 @@ export default function AnimeList() {
             <>
                 <div className="flex flex-wrap w-full h-full">
                     {Array.from({ length: 10 }, (_, i) =>
-                        <div className={cardStyle}>
+                        <div className={cardStyle} key={i}>
                             <Loading />
                         </div>
                     )}
