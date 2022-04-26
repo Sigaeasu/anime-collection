@@ -11,10 +11,10 @@ export default function RouteList() {
     return (
         <BrowserRouter>
         <Routes>
-            <Route path="/*" element={<Base />}/>
+            <Route path="/anime-collection/*" element={<Base />}/>
             <Route
-            path="/"
-            element={<Navigate to="/home" />}
+            path="/anime-collection/"
+            element={<Navigate to="/anime-collection/home" />}
             />
         </Routes>
       </BrowserRouter>
