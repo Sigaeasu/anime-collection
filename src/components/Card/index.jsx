@@ -1,24 +1,46 @@
-import React from "react";
+import React, {useState, useContext} from "react";
 import style from './style'
 
 import { Card } from 'antd'
-import { HeartOutlined, LikeOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import { HeartOutlined, LikeOutlined, VideoCameraOutlined, DeleteOutlined } from '@ant-design/icons';
+
+import {
+    Link,
+} from "react-router-dom";
+
+import { CollectionContext } from "../Base"
+import ConfirmationModal from "../Modal/ConfirmationModal";
 
 const AnimeCard = (props) => {
-    const { cardStyle } = style
+    const { cardStyle, deleteStyle } = style
     const { Meta } = Card;
+    const {collection, updateCollection} = useContext(CollectionContext);
+    const [selectedCollection, setSelectedCollection] = useState([])
+    const [isVisible, setIsVisible] = useState(false)
+
+    function removeFromCollection() {
+        setSelectedCollection(collection.find((e) => e.name === props.collection))
+        setIsVisible(true)
+    }
+
+    function closeModal() {
+        setIsVisible(false)
+    }
 
     return (
         <>
             <Card
                 cover={
-                    <div style={{overflow: "hidden", height: "200px", width: "100%"}}>
+                    <Link 
+                        to={`/detail/${props.media.id}`} 
+                        style={{overflow: "hidden", height: "200px", width: "100%"}}
+                    >
                         <img
                             alt={props.media.title.romaji}
                             src={props.media.coverImage.extraLarge}
                             style={{ height: "100%", minWidth: "100%", objectFit: "cover" }}
                         />
-                    </div>
+                    </Link>
                 }
                 actions={[
                     <div>
@@ -35,6 +57,12 @@ const AnimeCard = (props) => {
                     </div>,
                 ]}
                 className={cardStyle}
+                extra={props.type === "collection" ? 
+                        <DeleteOutlined 
+                            className={deleteStyle} 
+                            value={props.media.id}
+                            onClick={removeFromCollection} 
+                        /> : false}
             >
                 <Meta
                     title={props.media.title.romaji}
@@ -46,6 +74,13 @@ const AnimeCard = (props) => {
                     }}
                 />
             </Card>
+            <ConfirmationModal 
+                collection={selectedCollection}
+                item={props.media}
+                action={"removeAnime"}
+                visible={isVisible} 
+                closeModal={closeModal} 
+            />
         </>
     )
 }

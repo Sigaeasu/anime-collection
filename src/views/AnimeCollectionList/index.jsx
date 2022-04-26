@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, useContext} from "react";
+import React, {useState, useEffect, useRef, useContext, createContext} from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks"
 import { GET_ANIME_LIST_QUERY } from "../../utils/getAnimeList"
@@ -11,15 +11,13 @@ import {
 } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
 
-import {
-    Link,
-} from "react-router-dom";
-
 import AnimeCard from "../../components/Card";
 import Loading from "../../components/Loading";
 import CollectionModal from "../../components/Modal/CollectionModal";
 
 import { CollectionContext } from "../../components/Base"
+
+export const AnimeListContext = createContext();
 
 const AnimeCollectionList = () => {
     const { name } = useParams();
@@ -115,9 +113,9 @@ const AnimeCollectionList = () => {
                     <div className="flex flex-wrap w-full h-full">
                         {
                             animeList.map((e) => (
-                                <Link to={`/detail/${e.id}`} className={cardStyle} key={e.id}>
-                                    <AnimeCard media={e} />
-                                </Link>
+                                <div className={cardStyle} key={e.id}>
+                                    <AnimeCard collection={name} media={e} type={"collection"} />
+                                </div>
                             ))
                         }
                     </div>
