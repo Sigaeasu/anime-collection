@@ -23,8 +23,11 @@ const CollectionModal = forwardRef((props, ref) => {
     }))
   
     const createCollection = () => {
+        const regex = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g;
         if (collectionName === null || collectionName === '') {
             toast.error("Please input new collection's name !")
+        } else if (regex.test(collectionName)) {
+            toast.error("No special characters allowed !")
         } else {    
             let collection = JSON.parse(localStorage.getItem("collection"))
 
@@ -57,8 +60,11 @@ const CollectionModal = forwardRef((props, ref) => {
     }
 
     const editCollection = () => {
+        const regex = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g;
         if (collectionName === null || collectionName === '') {
             toast.error("Please input new collection's name !")
+        } else if (regex.test(collectionName)) {
+            toast.error("No special characters allowed !")
         } else {
             let collection = JSON.parse(localStorage.getItem("collection"))
             let arr = []

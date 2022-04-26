@@ -12,6 +12,19 @@ const cardStyle = css`
     }
 `
 
+const editContainer = css`
+    color: #ffe100;
+    transition: 0.2s;
+    font-size: 24px;
+    margin-left: 8px;
+    cursor: pointer;
+    &:hover {
+        transform: scale(2);
+        transition: 0.2s;
+    }
+`
+
 export default {
-    cardStyle
+    cardStyle,
+    editContainer
 }
